@@ -1,8 +1,8 @@
 from airflow.sdk import DAG
 import datetime
 import pendulum
+from common.common_func import get_sftp
 from airflow.providers.standard.operators.python import PythonOperator
-import common.common_func import get_sftp
 
 with DAG(
     dag_id="dags_python_import_func",
