@@ -2,7 +2,7 @@
 # from, import 선언부 순서 상관없음
 # env={'START_DATE':'{{data_inverval_start~~ -> env={'START_DATE':'{{data_interval_start~~
 # macro.dateutil.~ -> macros.dateutil.~
-
+# bash_command, line 24 참조
 
 from airflow.sdk import DAG
 import datetime
@@ -21,6 +21,7 @@ with DAG(
         env={'START_DATE':'{{data_interval_start.in_timezone("Asia/Seoul") | ds}}',
              'END_DATE':'{{(data_interval_end.in_timezone("Asia/Seoul") - macros.dateutil.relativedelta.relativedelta(days=1)) | ds}}'
         },
-        bash_command='echo "START_DATE: $START_DATE" && "END_DATE: $END_DATE"'
+        # bash_command='echo "START_DATE: $START_DATE" && "END_DATE: $END_DATE"'
+        bash_command='echo "START_DATE: $START_DATE" && echo "END_DATE: $END_DATE"'
     )
     
