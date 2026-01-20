@@ -2,6 +2,7 @@
 # Python Operator에서 Jinja템플릿 사용하기
 # typo 줄이기위해 직접 입력하면서 오타여부 확인
 # pring -> print 또 오타 ㅠ
+# line 33 print('ds:' + kwargs['ts']) -> print('ts:' + kwargs['ts'])
 
 from airflow.sdk import DAG, task
 import datetime
@@ -29,7 +30,7 @@ with DAG(
     def python_function2(**kwargs):
         print(kwargs)
         print('ds:' + kwargs['ds'])
-        print('ds:' + kwargs['ts'])
+        print('ts:' + kwargs['ts'])
         print('data_interval_start:' + str(kwargs['data_interval_start']))
         print('data_interval_end:' + str(kwargs['data_interval_end']))
         print('task_instance:' + str(kwargs['ti']))
