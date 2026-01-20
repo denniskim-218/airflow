@@ -1,4 +1,5 @@
 # Jinja템플릿에서 제공하는 데이터 변수 알아보는 dag
+# typo 오류 여전하네 이번에 show_templates()에서 '_' 누락
 from airflow.sdk import DAG, task
 import datetime
 import pendulum
@@ -15,4 +16,4 @@ with DAG(
         from pprint import pprint
         pprint(kwargs)
     
-    show templates()
+    show_templates()
