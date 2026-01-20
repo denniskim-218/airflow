@@ -1,6 +1,7 @@
 # 2025.01.20
 # Python Operator에서 Jinja템플릿 사용하기
 # typo 줄이기위해 직접 입력하면서 오타여부 확인
+# pring -> print 또 오타 ㅠ
 
 from airflow.sdk import DAG, task
 import datetime
@@ -16,7 +17,7 @@ with DAG(
     
     def python_function1(start_date, end_date, **kwargs):
         print(start_date)
-        pring(end_date)
+        print(end_date)
 
     python_t1 = PythonOperator(
         task_id='python_t1',
