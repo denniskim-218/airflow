@@ -1,6 +1,7 @@
 # 2026.01.21 - python_with_macro
 # from, import 선언부 순서 상관없음
 # task decorator 사용 시, task도 import 해줘야 함 - from airflow.sdk import DAG, task
+# in_timezone("Asis/Seoul") -> in_timezone("Asia/Seoul")
 
 from airflow.sdk import DAG, task
 import datetime
@@ -15,8 +16,8 @@ with DAG(
 
     # @task 선언 for using_macro
     @task(task_id='task_using_macro',
-        templates_dict={'start_date':'{{(data_interval_end.in_timezone("Asis/Seoul") + macros.dateutil.relativedelta.relativedelta(months=-1,day=1)) | ds}}',
-                        'end_date':'{{(data_interval_end.in_timezone("Asis/Seoul").replace(day=1) + macros.dateutil.relativedelta.relativedelta(days=-1)) | ds}}'
+        templates_dict={'start_date':'{{(data_interval_end.in_timezone("Asia/Seoul") + macros.dateutil.relativedelta.relativedelta(months=-1,day=1)) | ds}}',
+                        'end_date':'{{(data_interval_end.in_timezone("Asia/Seoul").replace(day=1) + macros.dateutil.relativedelta.relativedelta(days=-1)) | ds}}'
         }
     )
 
@@ -32,14 +33,14 @@ with DAG(
 
     # @task 선언 for task_direct_calc
     @task(task_id='task_direct_calc')
-    
+
     # def선언 for task_direct_calc
     def get_datetime_calc(**kwargs):
         from dateutil.relativedelta import relativedelta
 
         data_interval_end = kwargs['data_interval_end']
-        prev_month_day_first = data_interval_end.in_timezone('Asis/Seoul') + relativedelta(months=-1, day=1)
-        prev_month_day_last = data_interval+end.in_timezone('Asis/Seoul').replace(day=1) + relativedelat(days=-1)
+        prev_month_day_first = data_interval_end.in_timezone('Asia/Seoul') + relativedelta(months=-1, day=1)
+        prev_month_day_last = data_interval+end.in_timezone('Asia/Seoul').replace(day=1) + relativedelat(days=-1)
         print(prev_month_day_first.strftime('%y-%m-%d'))
         print(prev_month_day_last.strftime('%y-%m-%d'))
 
