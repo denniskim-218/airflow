@@ -28,7 +28,7 @@ with DAG(
         ti.xcom_push(key="result2", value=[1,2,3,4])
 
     #task decorator 이용 - python_xcom_pull_task 선언
-    @task(task_id='python_xcom_push_task2')
+    @task(task_id='python_xcom_pull_task')
     def xcom_pull(**kwargs):
         ti = kwargs['ti']
         # 2025/07/06 - 3.0.0 버전부터 task_ids 값을 주지 않으면 Xcom 을 찾지 못함
