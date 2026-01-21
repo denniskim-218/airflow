@@ -1,5 +1,6 @@
 # 2026.01.21 - python_with_xcom_eg2
 # from, import 선언부 순서 상관없음
+# retun 'Success' -> return 'Success'
 
 from airflow.sdk import DAG, task
 import datetime
@@ -15,7 +16,7 @@ with DAG(
     #task decorator 이용 - python_xcom_push_by_return 선언
     @task(task_id='python_xcom_push_by_return')
     def xcom_push_result(**kwargs):
-        retun 'Success'
+        return 'Success'
 
     #task decorator 이용 - python_xcom_pull_1 선언
     @task(task_id='python_xcom_pull_1')
