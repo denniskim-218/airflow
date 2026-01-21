@@ -1,5 +1,6 @@
 # 2026.01.21 - python_with_xcom_eg1
 # from, import 선언부 순서 상관없음
+# ti.xcom_push(key="result2", value=[1.2.3,4]) -> ti.xcom_push(key="result2", value=[1,2,3,4])
 
 from airflow.sdk import DAG, task
 import datetime
@@ -17,14 +18,14 @@ with DAG(
     def xcom_push1(**kwargs):
         ti = kwargs['ti']
         ti.xcom_push(key="result1", value="value_1")
-        ti.xcom_push(key="result2", value=[1.2.3])
+        ti.xcom_push(key="result2", value=[1,2,3])
 
     #task decorator 이용 - python_xcom_push_task2 선언
     @task(task_id='python_xcom_push_task2')
     def xcom_push2(**kwargs):
         ti = kwargs['ti']
         ti.xcom_push(key="result1", value="value_2")
-        ti.xcom_push(key="result2", value=[1.2.3,4])
+        ti.xcom_push(key="result2", value=[1,2,3,4])
 
     #task decorator 이용 - python_xcom_pull_task 선언
     @task(task_id='python_xcom_push_task2')
