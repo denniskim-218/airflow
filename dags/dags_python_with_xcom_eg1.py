@@ -33,8 +33,9 @@ with DAG(
         ti = kwargs['ti']
         # 2025/07/06 - 3.0.0 버전부터 task_ids 값을 주지 않으면 Xcom 을 찾지 못함
         # 버그인지, 의도한 것인지는 확실치 않으나 해결될 때까지 task_ids 값을 리스트로 넣어 결과가 어떻게 나오는지 보는 것으로 대체
-        # value1 = ti.xcom_pull(key="result1") 2.0.0 버전때의 value 선언부
-        value1 = ti.xcom_pull(key="result1", task_ids=['python_xcom_push_task1','python_xcom_push_task2'])
+        # value1 = ti.xcom_pull(key="result1") --2.0.0 버전때의 value 선언부
+        # value1 = ti.xcom_pull(key="result1", task_ids=['python_xcom_push_task1','python_xcom_push_task2'])
+        value1 = ti.xcom_pull(key="result1")
         value2 = ti.xcom_pull(key="result2", task_ids='python_xcom_push_task1')
         print(value1)
         print(value2)
