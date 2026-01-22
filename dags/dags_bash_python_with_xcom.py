@@ -32,7 +32,7 @@ with DAG(
         bash_command='echo $STATUS && echo $DATA && echo $OPTIONS_CNT'
     )
 
-    python_push_xcom() >> bush_pull
+    python_push_xcom() >> bash_pull
 
     # bash -> python 오퍼레이터 xmom 전달 task
     bash_push = BashOperator(
