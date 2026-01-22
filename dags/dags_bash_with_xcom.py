@@ -16,7 +16,7 @@ with DAG(
     bash_push = BashOperator(
         task_id='bash_push',
         bash_command="echo start &&"
-                     "echo XCOM_PUSHED"
+                     "echo XCOM_PUSHED "
                      "{{ti.xcom_push(key='bash_pushed', value='first_bash_message')}} &&"
                      "echo COMPLETE"
     )
@@ -31,4 +31,3 @@ with DAG(
     )
 
     bash_push >> bash_pull
-    
