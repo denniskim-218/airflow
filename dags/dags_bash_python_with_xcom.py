@@ -2,6 +2,7 @@
 # from, import 선언부 순서 상관없음
 # import datetime 선언안해도 무방한가?
 # typo line 21 참조
+# typo line 38, SyntaxError: invalid syntax. Perhaps you forgot a comma?
 
 from airflow.sdk import DAG, task
 import datetime
@@ -35,7 +36,7 @@ with DAG(
 
     # bash -> python 오퍼레이터 xmom 전달 task
     bash_push = BashOperator(
-        task_id='bash_push'
+        task_id='bash_push',
         bash_command='echo PUSH_START '
                      '{{ti.xcom_push(key="bash_pushed", value=200)}} && '
                      'echo PUSH_COMPLETE'
