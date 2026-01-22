@@ -1,6 +1,7 @@
 # 2026.01.22 - bash_python_with_xcom
 # from, import 선언부 순서 상관없음
 # import datetime 선언안해도 무방한가?
+# typo line 21 참조
 
 from airflow.sdk import DAG, task
 import datetime
@@ -16,7 +17,8 @@ with DAG(
     # python -> bash 오퍼레이터 xmom 전달 task
     @task(task_id='python_push')
     def python_push_xcom():
-        result_dict = ['status':'Good', 'data':'[1,2,3,]', 'options_cnt':100]
+        result_dict = {'status':'Good', 'data':[1,2,3], 'options_cnt':100}
+        #result_dict = ['status':'Good', 'data':'[1,2,3,]', 'options_cnt':100]
         return result_dict
     
     bash_pull = BashOperator(
