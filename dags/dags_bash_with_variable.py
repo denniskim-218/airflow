@@ -1,7 +1,7 @@
 # 2026.01.23 - bash_with_variable
 # from, import 선언부 순서 상관없음
 
-from airflow.sdk import DAG, task
+from airflow.sdk import DAG, Variable
 import datetime
 import pendulum
 from airflow.providers.standard.operators.bash import BashOperator
@@ -25,4 +25,3 @@ with DAG(
         task_id='bash_ver_2',
         bash_command='echo variable2: {{var.variable.sample_key}}'
     )
-    
