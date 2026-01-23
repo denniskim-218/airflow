@@ -1,5 +1,6 @@
 # 2026.01.23 - branch_python_operator
 # from, import 선언부 순서 상관없음
+# line 24 콜론(:)누락으로 failed
 
 from airflow.sdk import DAG
 import datetime
@@ -20,7 +21,7 @@ with DAG(
         selected_item = random.choice(item_lst)
         if selected_item == 'A':
             return 'task_a'
-        elif selected_item in ['B','C']
+        elif selected_item in ['B','C']:
             return ['task_b','task_c']
     
     python_branch_task = BranchPythonOperator(
