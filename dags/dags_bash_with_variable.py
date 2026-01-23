@@ -17,11 +17,11 @@ with DAG(
 
     bash_ver_1 = BashOperator(
         task_id="bash_ver_1",
-        bash_command='echo valialbe1: {var_value}'
+        bash_command="echo valialbe1: {var_value}"
     )
 
     # 전역변수는 Jinja템플릿 형태로 이용할 것을 권고하고 있음
     bash_ver_2 = BashOperator(
         task_id='bash_ver_2',
-        bash_command='echo variable2: {{var.value.sample_key}}'
+        bash_command="echo variable2: {{var.value.sample_key}}"
     )
