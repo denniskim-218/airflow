@@ -20,6 +20,8 @@ with DAG(
     
     send_email = EmailOperator(
         task_id='send_email',
+        # 강의에서는 명시되지 않았으나 실행하면 AirflowNotFoundException: The conn_id `smtp_default` isn't defined 오류남
+        conn_id='conn_smtp_gmail',
         to ='dhkim218@naver.com',
         subject='{{data_interval_end.in_timezone("Asia/Seoul") | ds}} some_logic 처리결과',
         html_content='{{data_interval_end.in_timezone("Asia/Seoul") | ds}} 처리결과는 <br> \
