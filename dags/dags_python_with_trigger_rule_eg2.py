@@ -1,16 +1,13 @@
+# 2026.01.26 - python_with_trigger_rule_eg2
+# copy & paste -> eye scan
+
 import pendulum
-# Airflow 3.0 부터 아래 경로로 import 합니다.
 from airflow.sdk import DAG, task
 from airflow.providers.standard.operators.bash import BashOperator
 
-# Airflow 2.10.5 이하 버전에서 실습시 아래 경로에서 import 하세요.
-#from airflow import DAG
-#from airflow.decorators import task
-#from airflow.operators.bash import BashOperator
-
 with DAG(
     dag_id='dags_python_with_trigger_rule_eg2',
-    start_date=pendulum.datetime(2023,4,1, tz='Asia/Seoul'),
+    start_date=pendulum.datetime(2026, 1, 1, tz='Asia/Seoul'),
     schedule=None,
     catchup=False
 ) as dag:
@@ -45,4 +42,3 @@ with DAG(
         print('정상 처리')
 
     random_branch() >> [task_a, task_b(), task_c()] >> task_d()
-    
