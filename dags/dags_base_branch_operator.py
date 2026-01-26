@@ -17,7 +17,7 @@ with DAG(
 
     # 클래스 상속을 위한 선언
     class CustomerBranchOperator(BaseBranchOperator):
-        def choose_barch(self, context):
+        def choose_branch(self, context):
             import random
             print(context)
 
