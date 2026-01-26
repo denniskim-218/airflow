@@ -1,5 +1,6 @@
 # 2026.01.26 - base_branch_operator
 # from, import 선언부 순서 상관없음
+# python 문법(들여쓰기)
 
 from airflow.sdk import DAG
 import pendulum
@@ -16,16 +17,16 @@ with DAG(
 
     # 클래스 상속을 위한 선언
     class CustomerBranchOperator(BaseBranchOperator):
-    def choose_barch(self, context):
-        import random
-        print(context)
+        def choose_barch(self, context):
+            import random
+            print(context)
 
-        item_lst = ['A','B','C']
-        selected_item = random.choice(item_lst)
-        if selected_item == 'A':
-            return 'task_a'
-        elif selected_item in ['B','C']:
-            return ['task_b','task_c']
+            item_lst = ['A','B','C']
+            selected_item = random.choice(item_lst)
+            if selected_item == 'A':
+                return 'task_a'
+            elif selected_item in ['B','C']:
+                return ['task_b','task_c']
     
     custom_branch_operator = CustomerBranchOperator(task_id='python_barch_task')
 
